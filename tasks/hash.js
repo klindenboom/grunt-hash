@@ -39,6 +39,7 @@ module.exports = function(grunt) {
     grunt.file.expand(basePath + options.src).forEach(function(file) {
       //read file
       var source = fs.readFileSync(file, 'utf8');
+      //var source = grunt.file.read(file);
       //get hash of file 
       var hash = getHash(source, 'utf8');
       //extension of file
@@ -70,7 +71,8 @@ module.exports = function(grunt) {
       }
       //
       if (!fs.existsSync(newPath)) {
-        fs.writeFileSync(newPath, source);
+        // fs.writeFileSync(newPath, source);
+        fs.createReadStream(options.dest + newDir + '/' + basename + ext).pipe(fs.createWriteStream(newPath));
         //grunt.log.writeln('Generated: '+newPath);
       } else {
         //grunt.log.writeln('Skipping: '+newPath);
