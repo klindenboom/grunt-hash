@@ -35,7 +35,7 @@ module.exports = function(grunt) {
     if (!fs.existsSync(options.dest)) {
       fs.mkdirSync(options.dest);
     }
-
+    //
     grunt.file.expand(basePath + options.src).forEach(function(file) {
       //read file
       var source = fs.readFileSync(file, 'utf8');
