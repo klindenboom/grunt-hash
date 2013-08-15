@@ -71,8 +71,10 @@ module.exports = function(grunt) {
       }
       //
       if (!fs.existsSync(newPath)) {
-        // fs.writeFileSync(newPath, source);
-        fs.createReadStream(options.dest + newDir + '/' + basename + ext).pipe(fs.createWriteStream(newPath));
+        if (ext == ".jpg" || ext == ".png")
+          fs.createReadStream(options.dest + newDir + '/' + basename + ext).pipe(fs.createWriteStream(newPath));
+        else 
+          fs.writeFileSync(newPath, source);
         //grunt.log.writeln('Generated: '+newPath);
       } else {
         //grunt.log.writeln('Skipping: '+newPath);
