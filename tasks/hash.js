@@ -70,15 +70,15 @@ module.exports = function(grunt) {
         newPath = options.dest + newFile; 
       }
       //
-      if (!fs.existsSync(newPath)) {
+      //if (!fs.existsSync(newPath)) {
         if (ext == ".jpg" || ext == ".png")
           fs.createReadStream(options.dest + newDir + '/' + basename + ext).pipe(fs.createWriteStream(newPath));
         else 
           fs.writeFileSync(newPath, source);
         //grunt.log.writeln('Generated: '+newPath);
-      } else {
+     // } else {
         //grunt.log.writeln('Skipping: '+newPath);
-      }
+      //}
       if (flatten === false) {
         map['/' + newDir + '/' + basename+ext] = '/' + newDir + '/' + newFile;
       }
