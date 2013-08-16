@@ -38,7 +38,7 @@ module.exports = function(grunt) {
     //
     grunt.file.expand(basePath + options.src).forEach(function(file) {
       //read file
-      var source = fs.readFileSync(file, 'utf8');
+      var source = fs.readFileSync(file);
       //var source = grunt.file.read(file);
       //get hash of file 
       var hash = getHash(source, 'utf8');
@@ -71,9 +71,9 @@ module.exports = function(grunt) {
       }
       //
       //if (!fs.existsSync(newPath)) {
-        if (ext == ".jpg" || ext == ".png")
-          fs.createReadStream(options.dest + newDir + '/' + basename + ext).pipe(fs.createWriteStream(newPath));
-        else 
+        // if (ext == ".jpg" || ext == ".png")
+        //   fs.createReadStream(options.dest + newDir + '/' + basename + ext).pipe(fs.createWriteStream(newPath));
+        // else 
           fs.writeFileSync(newPath, source);
         //grunt.log.writeln('Generated: '+newPath);
      // } else {
